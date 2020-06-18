@@ -1,15 +1,33 @@
+import { Todo } from "../reducers";
+
 export enum TodoActionType {
   ADD = "TODO/ADD",
   TOGGLE = "TODO/TOGGLE",
 }
 
-export const addTodo = (text: string, id: number) => ({
+// typeofで互換性を作っている！！
+type AddTodo = {
+  type: typeof TodoActionType.ADD;
+  payload: {
+    todo: Todo;
+  };
+};
+
+export const addTodo = (todo: Todo): AddTodo => ({
   type: TodoActionType.ADD,
-  text,
-  id,
+  payload: { todo },
 });
 
-export const toggleTodo = (id: number) => ({
+type ToggleTodo = {
+  type: typeof TodoActionType.TOGGLE;
+  payload: {
+    id: number;
+  };
+};
+
+export const toggleTodo = (id: number): ToggleTodo => ({
   type: TodoActionType.TOGGLE,
-  id,
+  payload: { id },
 });
+
+export type ActionType = AddTodo | ToggleTodo;
