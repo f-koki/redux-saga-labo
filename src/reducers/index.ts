@@ -12,6 +12,7 @@ type TodoState = {
 
 const initialState: TodoState = { todos: [] };
 
+// TODO: なぜエラーを吐くのか
 export const reducer: Reducer<TodoState, ActionType> = (
   state: TodoState = initialState,
   action: ActionType
