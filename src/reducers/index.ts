@@ -12,17 +12,19 @@ type TodoState = {
 
 const initialState: TodoState = { todos: [] };
 
-// TODO: なぜエラーを吐くのか
 export const reducer: Reducer<TodoState, ActionType> = (
   state: TodoState = initialState,
   action: ActionType
-) => {
+): TodoState => {
   switch (action.type) {
-    case TodoActionType.ADD:
+    case TodoActionType.ADD: {
+      const nextTodos = [...state.todos, action.payload.todo];
       return {
         ...state,
-        todos: state.todos.push(action.payload.todo),
+        todos: nextTodos,
       };
+    }
+
     case TodoActionType.TOGGLE:
       return {
         ...state,
