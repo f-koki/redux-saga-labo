@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header: React.FC = () => (
   <div className="Header">
-    <Link to="/todo">todo list</Link>
+    <Link to="/todo-list">todo list</Link>
   </div>
 );
 

@@ -1,5 +1,3 @@
-import { Todo } from "../reducers";
-
 export enum TodoActionType {
   ADD = "TODO/ADD",
   TOGGLE = "TODO/TOGGLE",
@@ -9,13 +7,13 @@ export enum TodoActionType {
 type AddTodo = {
   type: typeof TodoActionType.ADD;
   payload: {
-    todo: Todo;
+    text: string;
   };
 };
 
-export const addTodo = (todo: Todo): AddTodo => ({
+export const addTodo = (text: string): AddTodo => ({
   type: TodoActionType.ADD,
-  payload: { todo },
+  payload: { text },
 });
 
 type ToggleTodo = {

@@ -6,19 +6,27 @@ export type Todo = {
   id: number;
 };
 
-type TodoState = {
+export type TodoState = {
   todos: Todo[];
 };
 
 const initialState: TodoState = { todos: [] };
 
-export const reducer: Reducer<TodoState, ActionType> = (
+const calculateId = (todos: Todo[]): number => {
+  // TODO つくる
+  return 3;
+};
+
+export const todoReducer: Reducer<TodoState, ActionType> = (
   state: TodoState = initialState,
   action: ActionType
 ): TodoState => {
   switch (action.type) {
     case TodoActionType.ADD: {
-      const nextTodos = [...state.todos, action.payload.todo];
+      const nextTodos = [
+        ...state.todos,
+        { text: action.payload.text, id: calculateId(state.todos) },
+      ];
       return {
         ...state,
         todos: nextTodos,
