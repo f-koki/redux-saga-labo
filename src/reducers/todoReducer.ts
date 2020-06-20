@@ -13,7 +13,6 @@ export type TodoState = {
 const initialState: TodoState = { todos: [] };
 
 const calculateId = (todos: Todo[]): number => {
-  // TODO つくる
   return 3;
 };
 

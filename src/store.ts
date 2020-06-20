@@ -1,4 +1,8 @@
 import { createStore } from "redux";
-import { todoReducer } from "./reducers/todoReducer";
+import { todoReducer, Todo } from "./reducers/todoReducer";
 
-export const sotre = createStore(todoReducer);
+const initialState = {
+  todos: [{ id: 1, text: "hoge" }],
+};
+
+export const sotre = createStore(todoReducer, initialState);

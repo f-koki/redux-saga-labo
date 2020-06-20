@@ -37,6 +37,7 @@ const TodoList: React.FC<Props> = ({ todos, addTodo, toggleTodo }) => {
   );
 };
 
+// TODO: errorになるのを直す
 const mapStateToProps = (state: TodoState): StateProps => ({
   todos: state.todos,
 });
@@ -46,4 +47,7 @@ const mapDispatchToProps = (dispatch: Dispatch<ActionType>): DispatchProps => ({
   toggleTodo: (id: number) => dispatch(toggleTodo(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default connect<StateProps, DispatchProps>(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList);
