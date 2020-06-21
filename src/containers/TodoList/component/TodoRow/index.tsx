@@ -1,5 +1,5 @@
 import React from "react";
-import { Todo } from "../../../../reducers/todoReducer";
+import { Todo } from "../../reducer";
 
 type Props = {
   todo: Todo;

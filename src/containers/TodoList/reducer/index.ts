@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { TodoActionType, ActionType } from "../actions";
+import { TodoActionType, ActionType } from "../action";
 
 export type Todo = {
   text: string;

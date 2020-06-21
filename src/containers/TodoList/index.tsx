@@ -1,9 +1,10 @@
 import React from "react";
-import { Todo, TodoState } from "../../reducers/todoReducer";
 import TodoRow from "./component/TodoRow";
 import { connect } from "react-redux";
-import { addTodo, toggleTodo, ActionType } from "../../actions";
+import { addTodo, toggleTodo, ActionType } from "./action";
 import { Dispatch } from "redux";
+import { RootState } from "../../store";
+import { Todo } from "./reducer";
 
 type StateProps = {
   todos: Todo[];
@@ -14,7 +15,7 @@ type DispatchProps = {
   toggleTodo: (id: number) => void;
 };
 
-type Props = StateProps & DispatchProps;
+type Props = RootState & DispatchProps;
 
 const TodoList: React.FC<Props> = ({ todos, addTodo, toggleTodo }) => {
   return (
@@ -38,7 +39,7 @@ const TodoList: React.FC<Props> = ({ todos, addTodo, toggleTodo }) => {
 };
 
 // TODO: errorになるのを直す
-const mapStateToProps = (state: TodoState): StateProps => ({
+const mapStateToProps = (state: any): RootState => ({
   todos: state.todos,
 });
 
