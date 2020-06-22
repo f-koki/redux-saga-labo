@@ -1,23 +1,21 @@
 import React from "react";
 import TodoRow from "./component/TodoRow";
 import { connect } from "react-redux";
-import { addTodo, toggleTodo, ActionType } from "./action";
+import { addTodo, ActionType } from "./action";
 import { Dispatch } from "redux";
 import { RootState } from "../../store";
-import { Todo } from "./reducer";
 
 type StateProps = {
-  todos: Todo[];
+  todos: string[];
 };
 
 type DispatchProps = {
   addTodo: (text: string) => void;
-  toggleTodo: (id: number) => void;
 };
 
 type Props = RootState & DispatchProps;
 
-const TodoList: React.FC<Props> = ({ todos, addTodo, toggleTodo }) => {
+const TodoList: React.FC<Props> = ({ todos, addTodo }) => {
   return (
     <div className="TodoList">
       {todos.length > 0 && (
@@ -45,7 +43,6 @@ const mapStateToProps = (state: any): RootState => ({
 
 const mapDispatchToProps = (dispatch: Dispatch<ActionType>): DispatchProps => ({
   addTodo: (text: string) => dispatch(addTodo(text)),
-  toggleTodo: (id: number) => dispatch(toggleTodo(id)),
 });
 
 export default connect<StateProps, DispatchProps>(

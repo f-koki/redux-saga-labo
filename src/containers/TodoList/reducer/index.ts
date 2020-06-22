@@ -1,20 +1,11 @@
 import { Reducer } from "redux";
 import { TodoActionType, ActionType } from "../action";
 
-export type Todo = {
-  text: string;
-  id: number;
-};
-
 export type TodoState = {
-  todos: Todo[];
+  todos: string[];
 };
 
 const initialState: TodoState = { todos: [] };
-
-const calculateId = (todos: Todo[]): number => {
-  return 3;
-};
 
 export const todoReducer: Reducer<TodoState, ActionType> = (
   state: TodoState = initialState,
@@ -22,19 +13,10 @@ export const todoReducer: Reducer<TodoState, ActionType> = (
 ): TodoState => {
   switch (action.type) {
     case TodoActionType.ADD: {
-      const nextTodos = [
-        ...state.todos,
-        { text: action.payload.text, id: calculateId(state.todos) },
-      ];
       return {
         ...state,
-        todos: nextTodos,
+        todos: [...state.todos, action.payload.text],
       };
     }
-
-    case TodoActionType.TOGGLE:
-      return {
-        ...state,
-      };
   }
 };

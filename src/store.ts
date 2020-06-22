@@ -1,12 +1,12 @@
 import { createStore } from "redux";
-import { todoReducer, Todo } from "./containers/TodoList/reducer";
+import { todoReducer } from "./containers/TodoList/reducer";
 
 export type RootState = {
-  todos: Todo[];
+  todos: string[];
 };
 
 const initialState: RootState = {
-  todos: [{ id: 1, text: "hoge" }],
+  todos: [],
 };
 
 export const sotre = createStore(todoReducer, initialState);
