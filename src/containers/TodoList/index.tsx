@@ -13,7 +13,7 @@ type DispatchProps = {
   addTodo: (text: string) => void;
 };
 
-type Props = RootState & DispatchProps;
+type Props = StateProps & DispatchProps;
 
 const TodoList: React.FC<Props> = ({ todos, addTodo }) => {
   return (
@@ -37,15 +37,17 @@ const TodoList: React.FC<Props> = ({ todos, addTodo }) => {
 };
 
 // TODO: errorになるのを直す
-const mapStateToProps = (state: any): RootState => ({
-  todos: state.todos,
-});
+const mapStateToProps = (state: RootState) => {
+  return {
+    todos: state.todos,
+  }
+};
 
-const mapDispatchToProps = (dispatch: Dispatch<ActionType>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<ActionType>) => ({
   addTodo: (text: string) => dispatch(addTodo(text)),
 });
 
-export default connect<StateProps, DispatchProps>(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(TodoList);
