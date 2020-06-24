@@ -1,14 +1,21 @@
-import { createStore } from "redux";
-import { todoReducer } from "./containers/TodoList/reducer";
+import { createStore, Store, combineReducers } from "redux";
+import { todoReducer, TodoState } from "./containers/TodoList/reducer";
 
 export type RootState = {
-  todos: string[];
+  todoState: TodoState;
 };
 
 const initialState: RootState = {
-  todos: [],
+  todoState: {
+    todos: [],
+  },
 };
 
-export const sotre = createStore(todoReducer, initialState);
+export const store: Store = createStore(
+  combineReducers({
+    todo: todoReducer,
+  }),
+  initialState
+);
 
-export type AllState = ReturnType<typeof sotre.getState>;
+export type AllState = ReturnType<typeof store.getState>;

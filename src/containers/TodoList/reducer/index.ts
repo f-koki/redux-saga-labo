@@ -8,7 +8,7 @@ export type TodoState = {
 const initialState: TodoState = { todos: [] };
 
 export const todoReducer: Reducer<TodoState, ActionType> = (
-  state: TodoState = initialState,
+  state = initialState,
   action: ActionType
 ): TodoState => {
   switch (action.type) {
