@@ -11,11 +11,6 @@ const initialState: RootState = {
   },
 };
 
-export const store: Store = createStore(
-  combineReducers({
-    todo: todoReducer,
-  }),
-  initialState
-);
+export const store: Store = createStore(todoReducer, initialState);
 
 export type AllState = ReturnType<typeof store.getState>;
