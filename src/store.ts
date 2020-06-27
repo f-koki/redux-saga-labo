@@ -1,11 +1,11 @@
-import { createStore, Store, combineReducers } from "redux";
+import { createStore, Store } from "redux";
 import { todoReducer, TodoState } from "./containers/TodoList/reducer";
 
 export type RootState = {
   todoState: TodoState;
 };
 
-const initialState: RootState = {
+const initialState: any = {
   todoState: {
     todos: [],
   },

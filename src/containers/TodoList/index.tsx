@@ -6,7 +6,7 @@ import { Dispatch } from "redux";
 import { RootState } from "../../store";
 
 type StateProps = {
-  todos: string[];
+  state: RootState;
 };
 
 type DispatchProps = {
@@ -15,7 +15,11 @@ type DispatchProps = {
 
 type Props = StateProps & DispatchProps;
 
-const TodoList: React.FC<Props> = ({ todos, addTodo }) => {
+const TodoList: React.FC<Props> = ({ state, addTodo }) => {
+  const todos =
+    state && state.todoState && state.todoState.todos
+      ? state.todoState.todos
+      : [];
   return (
     <div className="TodoList">
       {todos.length > 0 && (
@@ -36,11 +40,9 @@ const TodoList: React.FC<Props> = ({ todos, addTodo }) => {
   );
 };
 
-const mapStateToProps = (state: RootState) => {
-  return {
-    todos: state.todos,
-  };
-};
+const mapStateToProps = (state: RootState) => ({
+  state,
+});
 
 const mapDispatchToProps = (dispatch: Dispatch<ActionType>) => ({
   addTodo: (text: string) => dispatch(addTodo(text)),
